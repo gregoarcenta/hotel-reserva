@@ -1,0 +1,160 @@
+:root {
+   --gris-color: #3e3e3e;
+   --gris-color2: #636363;
+}
+
+body {
+   font-family: "Roboto", sans-serif;
+}
+h1,
+h2,
+h3,
+h4,
+h5 {
+   font-size: 1.5rem;
+   font-weight: 700;
+}
+p {
+   line-height: 1.8rem;
+}
+
+/***********Navegación****************/
+.navbar-brand {
+   width: 180px;
+}
+.navbar-brand h1 {
+   font-weight: 700;
+}
+.navbar .nav-link {
+   font-weight: 500;
+   text-transform: uppercase;
+   font-size: 0.95rem;
+   color: var(--gris-color) !important;
+}
+.nav-link button {
+   font-weight: 500;
+}
+.navbar .nav-link:hover {
+   color: var(--gris-color2) !important;
+}
+.navbar {
+   z-index: 1001;
+   transition: all 0.3s ease-in;
+   position: fixed;
+   right: 0;
+   left: 0;
+}
+
+/******Slide*******/
+
+.carousel {
+   max-height: 100vh;
+}
+.carousel img {
+   max-height: 100vh;
+}
+
+.info-carousel h3 {
+   font-size: 2.5rem;
+   text-transform: uppercase;
+   font-weight: 300;
+}
+
+/*******Nosotros************/
+.nosotros h2 {
+   font-size: 2rem;
+}
+/******Servicios********/
+.servicios p {
+   font-weight: 300;
+}
+
+/*********Comida*************/
+.comida {
+   position: relative;
+}
+.bg-comida {
+   height: 25rem;
+   background-image: url(/images/room-service.jpg);
+   background-attachment: fixed;
+   background-position: center bottom;
+   background-repeat: no-repeat;
+   background-size: cover;
+}
+.bg-comida::before {
+   content: "dsad";
+   position: absolute;
+   top: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: #000000;
+   opacity: 0.3;
+}
+.comida-info {
+   position: absolute;
+}
+.comida p {
+   font-size: 2.1rem;
+   font-weight: 100;
+   color: white;
+   line-height: 3.5rem;
+   margin: 0;
+}
+
+/*******Conocenos*********/
+.conocenos h2 {
+   font-size: 2rem;
+}
+.conocenos iframe {
+   width: 100%;
+}
+
+/********Footer*********/
+.footer ul li {
+   list-style: none;
+   line-height: 2.7rem;
+}
+.footer ul li a {
+   font-size: 1rem;
+   text-decoration: none;
+   cursor: pointer;
+   color: var(--gris-color);
+}
+.footer .redes {
+   font-size: 2rem;
+}
+.footer .copyright {
+   background-color: #e9e9e9;
+}
+.footer .copyright h5 {
+   font-size: 0.9rem;
+}
+
+/*******Boton Arriba******/
+.arriba {
+   position: fixed;
+   display: flex !important;
+   justify-content: center;
+   align-items: center;
+   right: 1rem;
+   bottom: 1rem;
+   width: 50px;
+   height: 50px;
+   border-radius: 50%;
+}
+.arriba-hidden {
+   visibility: hidden;
+}
+.arriba i {
+   font-size: 1.8rem;
+}
+
+/****Media Queries*****/
+@media only screen and (min-width: 576px) {
+   h1 {
+      font-size: 2.1rem;
+   }
+   .comida p {
+      font-size: 2.5rem;
+   }
+}
