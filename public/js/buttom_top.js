@@ -3,7 +3,7 @@ export function buttomTop() {
    if (buttomTop) {
       document.addEventListener("scroll", () => {
          const scrollY = window.pageYOffset;
-         console.log(scrollY);
+         //console.log(scrollY);
          if (scrollY > 700) {
             buttomTop.classList.remove("arriba-hidden");
          } else {

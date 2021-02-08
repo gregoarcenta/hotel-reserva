@@ -17,6 +17,9 @@ h5 {
 p {
    line-height: 1.8rem;
 }
+.m-top-container {
+   padding-top: 106px;
+}
 
 /***********Navegación****************/
 .navbar-brand {
@@ -43,11 +46,13 @@ p {
    position: fixed;
    right: 0;
    left: 0;
+   top: 0;
 }
 
 /******Slide*******/
 
 .carousel {
+   margin-top: 66px;
    max-height: 100vh;
 }
 .carousel img {
@@ -82,7 +87,7 @@ p {
    background-size: cover;
 }
 .bg-comida::before {
-   content: "dsad";
+   content: "";
    position: absolute;
    top: 0;
    bottom: 0;
@@ -149,12 +154,70 @@ p {
    font-size: 1.8rem;
 }
 
-/****Media Queries*****/
+/*
+*
+*
+*Media Queries
+*
+*
+*
+*/
 @media only screen and (min-width: 576px) {
    h1 {
       font-size: 2.1rem;
    }
+   .carousel {
+      margin-top: 0px;
+   }
    .comida p {
       font-size: 2.5rem;
    }
+}
+
+/*
+*
+*
+* LOGIN PAGE
+*
+*
+*/
+
+.login-background {
+   background-image: url(/images/login-background.jpg);
+   background-position: center center;
+   background-repeat: no-repeat;
+   background-size: cover;
+   position: absolute;
+   height: 100%;
+   width: 100%;
+}
+.login h5 {
+   font-size: 1rem;
+}
+.fa-arrow-left {
+   position: fixed;
+   display: inline;
+   top: 5%;
+   left: 4%;
+   font-size: 2rem;
+   cursor: pointer;
+   transition: font-size 0.2s ease-in;
+}
+.fa-arrow-left:hover {
+   font-size: 2.2rem;
+}
+
+/*
+*
+*
+* REGISTER PAGE
+*
+*
+*/
+
+.bg-register {
+   background-image: url(/images/hotel-Ceibo-Real-1.jpg);
+   background-repeat: no-repeat;
+   background-size: cover;
+   background-position: center center;
 }

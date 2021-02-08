@@ -1,10 +1,10 @@
 const User = require("../models/User");
 
 function index(req, res) {
-   res.render("index");
+   res.render("auth/register");
 }
 
-function create(req, res) {
+function register(req, res) {
    const { name, email } = req.body;
    User.create({
       name: name,
@@ -16,5 +16,5 @@ function create(req, res) {
 
 module.exports = {
    index,
-   create,
+   register,
 };
