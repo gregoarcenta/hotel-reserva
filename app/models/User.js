@@ -5,12 +5,19 @@ let UserSchema = new mongoose.Schema({
    name: {
       type: String,
       require: true,
-      unique: true,
+   },
+   apellido: {
+      type: String,
+      required: true,
    },
    email: {
       type: String,
       require: true,
       unique: true,
+   },
+   telefono: {
+      type: Number,
+      required: true,
    },
    admin: {
       type: Boolean,
@@ -18,7 +25,17 @@ let UserSchema = new mongoose.Schema({
    },
 });
 
-//UserSchema.plugin(mongooseBcrypt);
+UserSchema.plugin(mongooseBcrypt);
+
+UserSchema.pre("save", function (next) {
+   User.countDocuments({}, (err, count) => {
+      if (count === 0) {
+         this.admin = true;
+         next();
+      }
+      next();
+   });
+});
 
 const User = mongoose.model("User", UserSchema);
 module.exports = User;

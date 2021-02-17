@@ -21,7 +21,14 @@ p {
    padding-top: 106px;
 }
 
-/***********Navegación****************/
+/*
+*
+*
+* NAVIGATIÓN
+*
+*
+*/
+
 .navbar-brand {
    width: 180px;
 }
@@ -49,7 +56,13 @@ p {
    top: 0;
 }
 
-/******Slide*******/
+/*
+*
+*
+* SLIDE
+*
+*
+*/
 
 .carousel {
    margin-top: 66px;
@@ -69,6 +82,7 @@ p {
 .nosotros h2 {
    font-size: 2rem;
 }
+
 /******Servicios********/
 .servicios p {
    font-weight: 300;
@@ -157,26 +171,6 @@ p {
 /*
 *
 *
-*Media Queries
-*
-*
-*
-*/
-@media only screen and (min-width: 576px) {
-   h1 {
-      font-size: 2.1rem;
-   }
-   .carousel {
-      margin-top: 0px;
-   }
-   .comida p {
-      font-size: 2.5rem;
-   }
-}
-
-/*
-*
-*
 * LOGIN PAGE
 *
 *
@@ -220,4 +214,48 @@ p {
    background-repeat: no-repeat;
    background-size: cover;
    background-position: center center;
+}
+.form-control[type="number"]::-webkit-inner-spin-button,
+.form-control[type="number"]::-webkit-outer-spin-button {
+   -webkit-appearance: none;
+   margin: 0;
+}
+.form-control[type="number"] {
+   -moz-appearance: textfield;
+}
+.group-input {
+   position: relative;
+}
+.fa-check-circle {
+   position: absolute;
+   right: 2.5%;
+   bottom: 16%;
+   color: green;
+}
+.form-input-error {
+   font-size: 0.8rem;
+   color: rgb(201, 4, 4);
+   margin: 0.4rem;
+   line-height: 1.2rem;
+}
+
+/*
+*
+*
+*Media Queries
+*
+*
+*
+*/
+
+@media only screen and (min-width: 576px) {
+   h1 {
+      font-size: 2.1rem;
+   }
+   .carousel {
+      margin-top: 0px;
+   }
+   .comida p {
+      font-size: 2.5rem;
+   }
 }

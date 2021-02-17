@@ -6,7 +6,7 @@ const flash = require("connect-flash");
 
 const home = require("./routes/home");
 const auth = require("./routes/auth");
-const users = require("./routes/register");
+const register = require("./routes/register");
 const reservas = require("./routes/reservas");
 
 const db = require("./config/database");
@@ -14,7 +14,7 @@ require("dotenv").config();
 
 //Initializations
 const app = express();
-//db.connect();
+db.connect();
 
 //Globals variables
 
@@ -48,7 +48,7 @@ app.use(flash());
 //Routes
 app.use("/", home);
 app.use("/login", auth);
-app.use("/register", users);
+app.use("/register", register);
 app.use("/reservas", reservas);
 
 //Server Initializatión
