@@ -1,4 +1,4 @@
-import { createUser } from "./create_user_fetch.js";
+import { createUser, verifyEmail } from "./user_fetch.js";
 import regEx from "./regExp_validation.js";
 
 export const validateForm = () => {
@@ -54,9 +54,13 @@ export const validateForm = () => {
       const validation = RegExp(regExp);
 
       if (validation.test(input.value)) {
-         inputSuccess(input);
+         if (input.id === "email") {
+            validEmail(input);
+            return;
+         }
+         inputSuccess(input, 0);
       } else {
-         inputError(input);
+         inputError(input, 0);
       }
    }
 
@@ -64,26 +68,50 @@ export const validateForm = () => {
       const pass = document.getElementById("password");
       const pass2 = document.getElementById("password2");
       if (pass.value === pass2.value && pass.value !== "" && pass2.value !== "") {
-         inputSuccess(pass);
-         inputSuccess(pass2);
+         inputSuccess(pass, 0);
+         inputSuccess(pass2, 0);
       } else {
-         inputError(pass2);
+         inputError(pass2, 0);
       }
    }
 
-   function inputSuccess(input) {
+   function validEmail(input) {
+      document.querySelector(".loader-email").classList.remove("d-none");
+      const email = document.getElementById("email").value;
+      verifyEmail({ email }).then((res) => {
+         if (res.status === 200) {
+            document.querySelector(".loader-email").classList.add("d-none");
+            inputSuccess(input, 1);
+         } else {
+            document.querySelector(".loader-email").classList.add("d-none");
+            inputError(input, 1);
+         }
+      });
+   }
+
+   function inputSuccess(input, num) {
       const $errorInput = input.parentElement.nextElementSibling;
+      const $errorEmail = input.parentElement.nextElementSibling.nextElementSibling;
       const $checkIcon = input.nextElementSibling;
+
       input.parentElement.classList.add("mb-3");
       input.classList.remove("is-invalid");
       $errorInput.classList.add("d-none");
+      $errorEmail.classList.add("d-none");
       $checkIcon.classList.remove("d-none");
       values[input.id] = true;
    }
 
-   function inputError(input) {
-      const $errorInput = input.parentElement.nextElementSibling;
+   function inputError(input, num) {
+      let $errorInput = input.parentElement.nextElementSibling;
       const $checkIcon = input.nextElementSibling;
+      input.parentElement.nextElementSibling.nextElementSibling.classList.add(
+         "d-none"
+      );
+      if (num === 1) {
+         input.parentElement.nextElementSibling.classList.add("d-none");
+         $errorInput = input.parentElement.nextElementSibling.nextElementSibling;
+      }
       input.parentElement.classList.remove("mb-3");
       input.classList.add("is-invalid");
       $errorInput.classList.remove("d-none");
@@ -118,7 +146,7 @@ export const validateForm = () => {
                   });
                   location.href = "http://localhost:3000/login";
                } else {
-                  console.log("intenta mas tarde");
+                  $errorMessage.classList.remove("d-none");
                }
             })
             .catch((err) => console.log(err));

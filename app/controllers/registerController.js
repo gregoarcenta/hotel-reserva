@@ -16,7 +16,23 @@ async function register(req, res) {
       });
       res.status(200).json({ user });
    } catch (error) {
-      console.log(error);
+      //console.log(error);
+      res.status(500).json({ error });
+   }
+}
+
+async function verifyEmail(req, res) {
+   const { email } = req.body;
+   try {
+      const result = await User.findOne({ email });
+      //console.log(result);
+      if (result === null) {
+         res.json({ result });
+      } else {
+         res.status(405).json({ result });
+      }
+   } catch (error) {
+      //console.log(error);
       res.status(500).json({ error });
    }
 }
@@ -24,4 +40,5 @@ async function register(req, res) {
 module.exports = {
    index,
    register,
+   verifyEmail,
 };

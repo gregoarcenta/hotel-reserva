@@ -28,7 +28,7 @@ let UserSchema = new mongoose.Schema({
 UserSchema.plugin(mongooseBcrypt);
 
 UserSchema.pre("save", function (next) {
-   User.countDocuments({}, (err, count) => {
+   User.countDocuments({}).then((count) => {
       if (count === 0) {
          this.admin = true;
          next();

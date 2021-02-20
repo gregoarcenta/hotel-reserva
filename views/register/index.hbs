@@ -35,10 +35,16 @@
                             <label for="email" class="form-label">Correo electrónico:</label>
                             <input type="text" class="form-control" id="email" name="email">
                             <i class="fas fa-check-circle d-none"></i>
+                            <div class="loader-email d-none">
+                                <div class="loader"></div>
+                            </div>
                         </div>
                         <p class="form-input-error d-none">
                             El correo solo puede contener letras, numeros, puntos, guiones y
                             guion bajo*
+                        </p>
+                        <p class="form-input-error d-none">
+                            El correo ingresado ya existe*
                         </p>
                     </div>
                     <div class="col-md-6">
@@ -60,7 +66,7 @@
                             <i class="fas fa-check-circle d-none"></i>
                         </div>
                         <p class="form-input-error d-none">
-                            La contraseña tiene que ser de 4 a 12 digitos*
+                            La contraseña tiene que ser de 4 a 16 digitos*
                         </p>
                     </div>
                     <div class="col-md-6">
@@ -81,7 +87,6 @@
                 <div class="d-grid gap-2 mt-1 mb-3">
                     <button type="submit" class="btn btn-danger">Registrarse</button>
                 </div>
-
             </form>
         </div>
     </div>
