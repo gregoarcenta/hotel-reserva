@@ -58,7 +58,7 @@ export const validateForm = () => {
             validEmail(input);
             return;
          }
-         inputSuccess(input, 0);
+         inputSuccess(input);
       } else {
          inputError(input, 0);
       }
@@ -68,8 +68,8 @@ export const validateForm = () => {
       const pass = document.getElementById("password");
       const pass2 = document.getElementById("password2");
       if (pass.value === pass2.value && pass.value !== "" && pass2.value !== "") {
-         inputSuccess(pass, 0);
-         inputSuccess(pass2, 0);
+         inputSuccess(pass);
+         inputSuccess(pass2);
       } else {
          inputError(pass2, 0);
       }
@@ -81,7 +81,7 @@ export const validateForm = () => {
       verifyEmail({ email }).then((res) => {
          if (res.status === 200) {
             document.querySelector(".loader-email").classList.add("d-none");
-            inputSuccess(input, 1);
+            inputSuccess(input);
          } else {
             document.querySelector(".loader-email").classList.add("d-none");
             inputError(input, 1);
@@ -89,25 +89,28 @@ export const validateForm = () => {
       });
    }
 
-   function inputSuccess(input, num) {
+   function inputSuccess(input) {
       const $errorInput = input.parentElement.nextElementSibling;
       const $errorEmail = input.parentElement.nextElementSibling.nextElementSibling;
       const $checkIcon = input.nextElementSibling;
 
+      if ($errorEmail) {
+         $errorEmail.classList.add("d-none");
+      }
       input.parentElement.classList.add("mb-3");
       input.classList.remove("is-invalid");
       $errorInput.classList.add("d-none");
-      $errorEmail.classList.add("d-none");
       $checkIcon.classList.remove("d-none");
       values[input.id] = true;
    }
 
    function inputError(input, num) {
       let $errorInput = input.parentElement.nextElementSibling;
+      const $errorEmail = input.parentElement.nextElementSibling.nextElementSibling;
       const $checkIcon = input.nextElementSibling;
-      input.parentElement.nextElementSibling.nextElementSibling.classList.add(
-         "d-none"
-      );
+      if ($errorEmail) {
+         $errorEmail.classList.add("d-none");
+      }
       if (num === 1) {
          input.parentElement.nextElementSibling.classList.add("d-none");
          $errorInput = input.parentElement.nextElementSibling.nextElementSibling;
